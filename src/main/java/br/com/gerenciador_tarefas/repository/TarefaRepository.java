@@ -36,6 +36,12 @@ public class TarefaRepository {
         return listarConcluidos();
     }
 
+    public List<Tarefa> buscarPorStatus(TarefaStatus status){
+        return tarefas.stream()
+                .filter(tarefa -> tarefa.getPrioridade() == status)
+                .toList();
+    }
+
     /**
      * Armazena todas as Entidades Tarefas Pendentes em uma lista
      * @return uma lista de Entidades Tarefas Pendentes.

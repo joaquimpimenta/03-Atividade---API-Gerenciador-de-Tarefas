@@ -31,11 +31,14 @@ public class TarefaService {
      * representando as tarefas encontradas. Lista vazia caso nenhuma tarefa seja encontrada
      */
 
-    public List<TarefaResponse> listar() {
+    public List<TarefaResponse> listar(TarefaStatus status) {
 
-        List<Tarefa> tarefas = repository.listarTodos();
+        if (status == null){
+            List<Tarefa> tarefas = repository.listarTodos();
+            return mapper.toResponseList(tarefas);
+        }
 
-        return mapper.toResponseList(tarefas);
+        return mapper.toResponseList(repository.buscarPorStatus(status));
     }
 
     /**

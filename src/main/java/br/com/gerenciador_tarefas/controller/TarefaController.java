@@ -51,9 +51,9 @@ public class TarefaController {
             description = "Tarefas retornadas com sucesso"
     )
     @GetMapping
-    public ResponseEntity<List<TarefaResponse>> listar() {
+    public ResponseEntity<List<TarefaResponse>> listar(@RequestParam (required = false) TarefaStatus status) {
 
-        return ResponseEntity.ok(service.listar());
+        return ResponseEntity.ok(service.listar(status));
     }
 
     /**
